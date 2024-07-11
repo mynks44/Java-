@@ -2,7 +2,7 @@
 public class Palindrome {
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Please provide a single string as a command-line argument.");
+            System.out.println("Pleaseeeeeeeeeeeeeeeeeee provide a single string as a command-line argument.");
             return;
         }
 
