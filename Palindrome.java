@@ -1,24 +1,27 @@
-
 public class Palindrome {
+
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Pleaseeeeeeeeeeeeeeeeeee provide a single string as a command-line argument.");
+            System.out.println("Usage: java Palindrome <string>");
             return;
         }
 
         String input = args[0];
-        Stack stack = new Stack(input.length());
         
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+        String sanitizedInput = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        
+        Stack stack = new Stack(sanitizedInput.length());
+
+        for (int i = 0; i < sanitizedInput.length(); i++) {
+            stack.push(sanitizedInput.charAt(i));
         }
-        
-        String reversedString = "";
+
+        StringBuilder reversedString = new StringBuilder();
         while (!stack.isEmpty()) {
-            reversedString += stack.pop();
+            reversedString.append(stack.pop());
         }
-        
-        if (input.equals(reversedString)) {
+
+        if (sanitizedInput.equals(reversedString.toString())) {
             System.out.println(input + " is a palindrome.");
         } else {
             System.out.println(input + " is not a palindrome.");
