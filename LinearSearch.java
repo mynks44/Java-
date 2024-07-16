@@ -1,7 +1,10 @@
+import java.util.Scanner;
+
 public class LinearSearch {
-    public static int linearSearch(int[] arr, int key) {
+
+    public static <T> int linearSearch(T[] arr, T key) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == key) {
+            if (arr[i].equals(key)) {
                 return i;
             }
         }
@@ -9,9 +12,35 @@ public class LinearSearch {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 3, 5, 7, 9, 11};
-        int key = 7;
-        int result = linearSearch(arr, key);
-        System.out.println("Key found at index: " + result);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of elements in the array:");
+        int n = scanner.nextInt();
+        Integer[] arr = new Integer[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        System.out.println("Enter the number of keys to search for:");
+        int k = scanner.nextInt();
+        Integer[] keys = new Integer[k];
+
+        System.out.println("Enter the keys to search for:");
+        for (int i = 0; i < k; i++) {
+            keys[i] = scanner.nextInt();
+        }
+
+        for (Integer key : keys) {
+            int result = linearSearch(arr, key);
+            if (result != -1) {
+                System.out.printf("Key %d found at index: %d\n", key, result);
+            } else {
+                System.out.printf("Key %d not found in the array.\n", key);
+            }
+        }
+
+        scanner.close();
     }
 }
